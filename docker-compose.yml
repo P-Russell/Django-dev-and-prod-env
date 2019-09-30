@@ -19,14 +19,14 @@ services:
     - /app/node_modules
     - ./client:/app
 
-  server:
+  api:
     build:
       context: ./server
       dockerfile: Dockerfile.dev
       # ports:
         # - 8000:8000
     volumes:
-      - ./server:/app
+      - ./server:/var/www
     depends_on:
       - postgres
     environment:
@@ -38,5 +38,5 @@ services:
 
   postgres:
     image: postgres:latest
-    ports:
-      - 5432:5432
+    # ports:
+  #     - 5432:5432
